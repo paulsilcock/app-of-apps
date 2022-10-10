@@ -18,9 +18,9 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: argocd-server
+                name: argo-server
                 port:
-                  name: http
+                  name: web
 ---
 apiVersion: networking.gke.io/v1beta1
 kind: FrontendConfig
