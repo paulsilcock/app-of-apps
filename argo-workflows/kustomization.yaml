@@ -5,5 +5,21 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-workflows/v3.4.0/manifests/quick-start-postgres.yaml
   - ./ingress.yaml
   - ./certs.yaml
-patchesStrategicMerge:
-  - ./argo-deployment-patch.yaml
+patchesJson6902:
+  - target:
+      kind: Service
+      version: v1
+      name: argo-server
+    patch: |-
+      - op: replace
+        path: /spec/type
+        value: NodePort
+  - target:
+      kind: Deployment
+      version: v1
+      name: argo-server
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/args
+        value: ["--auth-mode=client", "--secure=true", "--namespaced", "--managed-namespace", "dev", "--verbose"]
+
