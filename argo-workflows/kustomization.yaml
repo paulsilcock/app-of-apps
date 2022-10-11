@@ -12,5 +12,7 @@ patchesJson6902:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/args
-        value: ["server", "--auth-mode=client", "--secure=true", "--namespaced", "--managed-namespace", "dev", "--verbose"]
-
+        value: ["server", "--auth-mode=client", "--secure=false", "--namespaced", "--managed-namespace", "dev", "--verbose"]
+      - op: replace
+        path: /spec/template/spec/containers/0/readinessProbe/httpGet/scheme
+        value: HTTP
