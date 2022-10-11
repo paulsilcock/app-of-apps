@@ -16,3 +16,11 @@ patchesJson6902:
       - op: replace
         path: /spec/template/spec/containers/0/readinessProbe/httpGet/scheme
         value: HTTP
+  - target:
+      kind: Deployment
+      version: v1
+      name: workflow-controller
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/args
+        value: ["--namespaced", "--managed-namespace", "dev"]
