@@ -4,6 +4,7 @@ namespace: argo
 resources:
   - https://raw.githubusercontent.com/argoproj/argo-workflows/v3.4.0/manifests/quick-start-postgres.yaml
   - ./ingress.yaml
+  - ./service-account.yaml
 patchesJson6902:
   - target:
       kind: Deployment
