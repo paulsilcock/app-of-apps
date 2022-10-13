@@ -4,4 +4,4 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/paulsilcock/app-of-apps
-    targetRevision: dev/deploy-argo-workflows
+    targetRevision: HEAD
