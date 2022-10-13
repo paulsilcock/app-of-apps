@@ -1,0 +1,26 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - https://raw.githubusercontent.com/argoproj/argo-workflows/v3.4.0/manifests/quick-start-postgres.yaml
+  - ./ingress.yaml
+  - ./service-account.yaml
+patchesJson6902:
+  - target:
+      kind: Deployment
+      version: v1
+      name: argo-server
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/args
+        value: ["server", "--auth-mode=client", "--secure=false", "--namespaced", "--managed-namespace", "dev", "--verbose"]
+      - op: replace
+        path: /spec/template/spec/containers/0/readinessProbe/httpGet/scheme
+        value: HTTP
+  - target:
+      kind: Deployment
+      version: v1
+      name: workflow-controller
+    patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/args
+        value: ["--namespaced", "--managed-namespace", "dev"]

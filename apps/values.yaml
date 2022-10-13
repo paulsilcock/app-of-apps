@@ -1,0 +1,7 @@
+
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/paulsilcock/app-of-apps
+    targetRevision: HEAD
