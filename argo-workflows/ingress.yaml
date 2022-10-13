@@ -21,4 +21,4 @@ spec:
   tls:
     - hosts:
         - wf.pauljs.io
-      secretName: argocd-server-cert
+      secretName: argo-server-cert
