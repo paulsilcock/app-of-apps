@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: WorkflowTemplate
+metadata:
+  name: dvc-pipeline
+  namespace: dev
+spec:
+  templates:
+    - name: dvc-stage
+      podSpecPatch: "{{inputs.parameters.podSpecPatch}}"
+      container:
+        args:
+          - >-
+              dvc status {{inputs.parameters.target}}:{{inputs.parameters.stage}};
+              dvc pull --run-cache --remote {{inputs.parameters.dvc-remote}};
+              dvc repro {{inputs.parameters.target}}:{{inputs.parameters.stage}};
+              dvc push --run-cache --remote {{inputs.parameters.dvc-remote}}
+        command:
+          - sh
+          - -c
+        image: "{{inputs.parameters.image}}"
+        name: stage
+        workingDir: /src
+      inputs:
+        artifacts:
+          - name: source
+            path: /src
+        parameters:
+          - name: target
+            default: ""
+          - name: stage
+          - name: image
+          - name: dvc-remote
+          - name: podSpecPatch
+            default: ""
