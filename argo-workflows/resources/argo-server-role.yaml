@@ -12,11 +12,11 @@ rules:
   - ""
   resources:
   - pods
-  - pods/exec
   - pods/log
   verbs:
   - get
   - list
+  - watch
 - apiGroups:
   - ""
   resources:
