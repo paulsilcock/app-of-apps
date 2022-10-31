@@ -1,0 +1,27 @@
+# Restrict the argo-server role to enable execution of argo-server in the 
+# argo namespace. Workflow submission is delegated to the dev namespace.
+- op: replace
+  path: /rules
+  value: 
+  - apiGroups:
+    - ""
+    resources:
+    - configmaps
+    verbs:
+    - get
+    - watch
+    - list
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+    verbs:
+    - get
+  - apiGroups:
+    - ""
+    resources:
+    - serviceaccounts
+    verbs:
+    - get
+    - list
+    - watch

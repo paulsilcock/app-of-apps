@@ -1,0 +1,12 @@
+# Run the Argo UI in server auth mode, removing need for client 
+# login. Note that the associated service account/role ensures 
+# the UI is read only.
+- op: replace
+  path: /spec/template/spec/containers/0/args
+  value: 
+    - server
+    - --auth-mode=server
+    - --namespaced
+    - --managed-namespace
+    - dev
+    - --verbose
