@@ -1,0 +1,8 @@
+- op: add
+  path: /data/workflowDefaults
+  value: |
+    spec:
+      executor:
+        serviceAccountName: dvc-remote
+      serviceAccountName: dvc-remote
+      automountServiceAccountToken: false
