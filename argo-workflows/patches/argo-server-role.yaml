@@ -17,6 +17,7 @@
     - secrets
     verbs:
     - get
+    - create # Need to create secret for SSO
   - apiGroups:
     - ""
     resources:

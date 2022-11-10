@@ -6,6 +6,7 @@
   value: 
     - server
     - --auth-mode=sso
+    - --auth-mode=server
     - --namespaced
     - --managed-namespace
     - dev

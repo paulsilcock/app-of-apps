@@ -11,12 +11,13 @@ metadata:
     workflows.argoproj.io/rbac-rule: "true"
     workflows.argoproj.io/rbac-rule-precedence: "0"
 rules:
-- apiGroup:
+- apiGroups:
   - ""
   resources:
-  - secrets
+  - serviceaccounts
   verbs:
   - get
+  - list
 - apiGroups:
   - ""
   resources:

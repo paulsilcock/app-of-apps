@@ -17,4 +17,9 @@
       name: argo-sso
       key: github.clientSecret
     redirectUrl: https://wf.pauljs.io/oauth2/callback
+    scopes:
+     - groups
+     - email
+    rbac:
+      enabled: true
   
