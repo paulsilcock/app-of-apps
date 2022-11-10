@@ -6,3 +6,15 @@
         serviceAccountName: dvc-remote
       serviceAccountName: dvc-remote
       automountServiceAccountToken: false
+- op: add
+  path: /data/sso
+  value: |
+    issuer: https://token.actions.githubusercontent.com
+    clientId:
+      name: argo-sso
+      key: github.clientID
+    clientSecret:
+      name: argo-sso
+      key: github.clientSecret
+    redirectUrl: https://wf.pauljs.io/oauth2/callback
+  

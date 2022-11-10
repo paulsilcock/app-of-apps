@@ -5,7 +5,7 @@
   path: /spec/template/spec/containers/0/args
   value: 
     - server
-    - --auth-mode=server
+    - --auth-mode=sso
     - --namespaced
     - --managed-namespace
     - dev

@@ -7,6 +7,9 @@ metadata:
     app.kubernetes.io/instance: argo-workflows
   name: argo-server-ui-role
   namespace: dev
+  annotations:
+    workflows.argoproj.io/rbac-rule: "true"
+    workflows.argoproj.io/rbac-rule-precedence: "0"
 rules:
 - apiGroups:
   - ""
