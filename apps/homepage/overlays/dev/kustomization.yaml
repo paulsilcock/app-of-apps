@@ -16,9 +16,11 @@ replacements:
           - spec.rules.0.host
         options:
           delimiter: "."
+          index: -1
       - select:
           kind: Ingress
         fieldPaths:
           - spec.tls.0.hosts.0
         options:
           delimiter: "."
+          index: -1
