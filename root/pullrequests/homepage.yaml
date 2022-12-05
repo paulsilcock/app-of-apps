@@ -20,6 +20,7 @@ spec:
         path: apps/homepage/overlays/dev
         kustomize:
           commonLabels:
+            env: dev
             pull-request: "pr{{number}}"
           images: 
             - "europe-west2-docker.pkg.dev/gothic-album-364814/pauljs-io/homepage:{{head_sha}}"
