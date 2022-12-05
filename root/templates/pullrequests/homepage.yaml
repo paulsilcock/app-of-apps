@@ -14,12 +14,12 @@ spec:
       name: 'homepage-{{branch}}-{{number}}'
     spec:
       source:
-        repoURL: 'https://github.com/paulsilcock/app-of-apps.git'
-        targetRevision: HEAD
+        repoURL: {{ .Values.spec.source.repoURL }}
+        targetRevision: {{ .Values.spec.source.targetRevision }}
         path: apps/homepage
         kustomize:
           commonLabels: 'pull-request-{{number}}'
       project: default
       destination:
-        server: https://kubernetes.default.svc
-        namespace: default
+        server: {{ .Values.spec.destination.server }}
+        namespace: dev

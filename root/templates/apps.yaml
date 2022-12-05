@@ -5,8 +5,8 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/paulsilcock/app-of-apps.git
-      revision: HEAD
+      repoURL: {{ .Values.spec.source.repoURL }}
+      revision: {{ .Values.spec.source.targetRevision }}
       directories:
       - path: apps/*/overlays/*
       - path: apps/*/overlays/dev
@@ -16,10 +16,10 @@ spec:
       name: '{{path[0]}}'
     spec:
       source:
-        repoURL: 'https://github.com/paulsilcock/app-of-apps.git'
-        targetRevision: HEAD
+        repoURL: {{ .Values.spec.source.repoURL }}
+        targetRevision: {{ .Values.spec.source.targetRevision }}
         path: '{{path}}'
       project: default
       destination:
-        server: https://kubernetes.default.svc
+        server: {{ .Values.spec.destination.server }}
         namespace: '{{path[1]}}'
