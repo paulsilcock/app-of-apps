@@ -14,7 +14,7 @@ spec:
         exclude: true
   template:
     metadata:
-      name: '{{path[0]}}'
+      name: '{{path[1]}}'
     spec:
       source:
         repoURL: "https://github.com/paulsilcock/app-of-apps"
@@ -23,7 +23,7 @@ spec:
       project: default
       destination:
         server: "https://kubernetes.default.svc"
-        namespace: '{{path[1]}}'
+        namespace: '{{path[2]}}'
       syncPolicy:
         automated:
           prune: true
