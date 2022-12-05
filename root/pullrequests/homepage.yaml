@@ -11,15 +11,15 @@ spec:
   requeueAfterSeconds: 180
   template:
     metadata:
-      name: 'homepage-pr-{{number}}'
+      name: 'homepage-{{branch}}-{{number}}'
     spec:
       source:
-        repoURL: {{ .Values.spec.source.repoURL }}
-        targetRevision: {{ .Values.spec.source.targetRevision }}
+        repoURL: "https://github.com/paulsilcock/app-of-apps"
+        targetRevision: HEAD
         path: apps/homepage
         kustomize:
           commonLabels: 'pull-request-{{number}}'
       project: default
       destination:
-        server: {{ .Values.spec.destination.server }}
+        server: "https://kubernetes.default.svc"
         namespace: dev
