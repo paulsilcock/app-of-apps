@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: cert-issuer
+    kubernetes.io/ingress.class: "nginx"
+  name: homepage
+spec:
+  rules:
+    - host: pauljs.io
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: homepage
+                port:
+                  name: web
+  tls:
+    - hosts:
+        - pauljs.io
+      secretName: homepage-cert

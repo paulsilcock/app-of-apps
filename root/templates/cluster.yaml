@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapps
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/paulsilcock/app-of-apps.git
+      revision: HEAD
+      directories:
+      - path: cluster/*/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      source:
+        repoURL: 'https://github.com/paulsilcock/app-of-apps.git'
+        targetRevision: HEAD
+        path: '{{path}}'
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{path[0]}}'

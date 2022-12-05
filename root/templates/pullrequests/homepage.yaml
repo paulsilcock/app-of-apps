@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapps
+spec:
+  generators:
+    - pullRequest:
+        github:
+          owner: paulsilcock
+          repo: homepage
+  requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: 'homepage-{{branch}}-{{number}}'
+    spec:
+      source:
+        repoURL: 'https://github.com/paulsilcock/app-of-apps.git'
+        targetRevision: HEAD
+        path: apps/homepage
+        kustomize:
+          commonLabels: 'pull-request-{{number}}'
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
