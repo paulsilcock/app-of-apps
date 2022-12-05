@@ -4,5 +4,5 @@ resources:
 - ../../base
 images:
 - name: homepage
-  newName: hompage
+  newName: europe-west2-docker.pkg.dev/gothic-album-364814/pauljs-io/homepage
   newTag: 1.0.0

@@ -21,6 +21,10 @@ spec:
         kustomize:
           commonLabels:
             pull-request: "pull-request-{{number}}"
+          images: 
+            - name: homepage
+              newName: europe-west2-docker.pkg.dev/gothic-album-364814/pauljs-io/homepage
+              newTag: "{{head_sha}}"
       project: default
       destination:
         server: "https://kubernetes.default.svc"
