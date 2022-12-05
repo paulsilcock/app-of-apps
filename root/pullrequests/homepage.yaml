@@ -8,7 +8,7 @@ spec:
         github:
           owner: paulsilcock
           repo: homepage
-  requeueAfterSeconds: 180
+        requeueAfterSeconds: 180
   template:
     metadata:
       name: "homepage-{{branch}}-{{number}}"
