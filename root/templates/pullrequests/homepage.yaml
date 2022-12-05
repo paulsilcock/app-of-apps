@@ -11,7 +11,7 @@ spec:
   requeueAfterSeconds: 180
   template:
     metadata:
-      name: 'homepage-{{branch}}-{{number}}'
+      name: 'homepage-pr-{{number}}'
     spec:
       source:
         repoURL: {{ .Values.spec.source.repoURL }}
