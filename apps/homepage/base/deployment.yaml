@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: homepage
-        image: homepage
+        image: europe-west2-docker.pkg.dev/gothic-album-364814/pauljs-io/homepage
         resources:
           requests:
             memory: "64Mi"
