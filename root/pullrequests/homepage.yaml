@@ -17,7 +17,7 @@ spec:
       source:
         repoURL: "https://github.com/paulsilcock/app-of-apps"
         targetRevision: HEAD
-        path: apps/homepage
+        path: apps/homepage/overlays/dev
         kustomize:
           commonLabels:
             pull-request: "pull-request-{{number}}"
