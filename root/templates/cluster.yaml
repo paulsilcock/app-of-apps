@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapps
+spec:
+  generators:
+  - git:
+      repoURL: {{ .Values.spec.source.repoURL }}
+      revision: {{ .Values.spec.source.targetRevision }}
+      directories:
+      - path: cluster/*/*
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      source:
+        repoURL: {{ .Values.spec.source.repoURL }}
+        targetRevision: {{ .Values.spec.source.targetRevision }}
+        path: '{{path}}'
+      project: default
+      destination:
+        server: {{ .Values.spec.destination.server }}
+        namespace: '{{path[0]}}'

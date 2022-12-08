@@ -3,10 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - resources/namespaces.yaml
   - https://raw.githubusercontent.com/argoproj/argo-workflows/v3.4.0/manifests/quick-start-postgres.yaml
   - resources/ingress.yaml
   - resources/argo-role.yaml
-  - resources/argo-server-role.yaml
+  - resources/argo-server-ui-role.yaml
   - resources/dvc-pipeline-wt.yaml
   - resources/executor-role.yaml
   - resources/sso-external-secret.yaml

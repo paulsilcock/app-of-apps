@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapps
+spec:
+  generators:
+    - pullRequest:
+        github:
+          owner: paulsilcock
+          repo: homepage
+  requeueAfterSeconds: 180
+  template:
+    metadata:
+      name: 'homepage-{{branch}}-{{number}}'
+    spec:
+      source:
+        repoURL: {{ .Values.spec.source.repoURL }}
+        targetRevision: {{ .Values.spec.source.targetRevision }}
+        path: apps/homepage
+        kustomize:
+          commonLabels: 'pull-request-{{number}}'
+      project: default
+      destination:
+        server: {{ .Values.spec.destination.server }}
+        namespace: dev
