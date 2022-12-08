@@ -25,7 +25,7 @@ jobs:
       TAG: ${{ github.event.inputs.tag }}
       ENV: ${{ github.event.inputs.env }}
 
-    name: "Release ${{ env.APP }} v${{ env.TAG }} to ${{ env.ENV }}"
+    name: "Release ${{ github.event.inputs.app }} v${{ github.event.inputs.tag }} to ${{ github.event.inputs.env }}"
     runs-on: ubuntu-latest
 
     steps:
