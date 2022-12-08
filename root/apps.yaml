@@ -14,7 +14,7 @@ spec:
         exclude: true
   template:
     metadata:
-      name: '{{path[1]}}'
+      name: '{{path[1]}}-{{path[3]}}'
     spec:
       source:
         repoURL: "https://github.com/paulsilcock/app-of-apps"
