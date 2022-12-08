@@ -5,27 +5,27 @@ resources:
 
 images:
 - name: europe-west2-docker.pkg.dev/gothic-album-364814/pauljs-io/homepage
-  newTag: 1.0.0
+  newTag: 1.5.0
 
 commonLabels:
   env: staging
 
 replacements:
-  - source:
+- source:
+    fieldPath: metadata.labels.env
+    kind: Ingress
+  targets:
+  - fieldPaths:
+    - spec.rules.0.host
+    options:
+      delimiter: .
+      index: -1
+    select:
       kind: Ingress
-      fieldPath: metadata.labels.env
-    targets:
-      - select:
-          kind: Ingress
-        fieldPaths:
-          - spec.rules.0.host
-        options:
-          delimiter: "."
-          index: -1
-      - select:
-          kind: Ingress
-        fieldPaths:
-          - spec.tls.0.hosts.0
-        options:
-          delimiter: "."
-          index: -1
+  - fieldPaths:
+    - spec.tls.0.hosts.0
+    options:
+      delimiter: .
+      index: -1
+    select:
+      kind: Ingress
