@@ -10,10 +10,10 @@ spec:
       container:
         args:
           - >-
-              dvc status {{inputs.parameters.target}}:{{inputs.parameters.stage}};
               dvc pull --run-cache --remote {{inputs.parameters.dvc-remote}};
+              dvc status {{inputs.parameters.target}}:{{inputs.parameters.stage}};
               dvc repro {{inputs.parameters.target}}:{{inputs.parameters.stage}};
-              dvc push --run-cache --remote {{inputs.parameters.dvc-remote}}
+              dvc push --run-cache --remote {{inputs.parameters.dvc-remote}};
         command:
           - sh
           - -c
