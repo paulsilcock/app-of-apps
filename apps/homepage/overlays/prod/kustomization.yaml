@@ -17,9 +17,8 @@ patchesJson6902:
       name: homepage
     patch: |-
       - op: add
-        path: metadata/annotations
-        value: 
-          nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+        path: /metadata/annotations/nginx.ingress.kubernetes.io~1from-to-www-redirect
+        value: true
   - target:
       kind: Ingress
       version: v1
