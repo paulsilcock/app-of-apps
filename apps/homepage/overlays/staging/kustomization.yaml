@@ -16,14 +16,14 @@ replacements:
     kind: Ingress
   targets:
   - fieldPaths:
-    - spec.rules.0.host
+    - spec.rules.[host=pauljs.io].host
     options:
       delimiter: .
       index: -1
     select:
       kind: Ingress
   - fieldPaths:
-    - spec.tls.0.hosts.0
+    - spec.tls.[secretName=homepage-cert].hosts.*
     options:
       delimiter: .
       index: -1
