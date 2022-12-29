@@ -9,3 +9,22 @@ images:
 
 commonLabels:
   env: prod
+
+patchesJson6902:
+  - target:
+      kind: Ingress
+      version: v1
+      name: homepage
+    patch: |-
+      - op: add
+        path: metadata/annotations
+        value: 
+          nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+  - target:
+      kind: Ingress
+      version: v1
+      name: homepage
+    patch: |- 
+      - op: add
+        path: /spec/tls/0/hosts/-
+        value: www.pauljs.io
