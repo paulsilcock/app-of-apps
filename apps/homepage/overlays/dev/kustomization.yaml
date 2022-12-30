@@ -20,7 +20,7 @@ replacements:
       - select:
           kind: Ingress
         fieldPaths:
-          - spec.tls.[secretName=homepage-cert].hosts.*
+          - spec.tls.[secretName=homepage-cert].hosts.0
         options:
           delimiter: "."
           index: -1
