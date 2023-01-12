@@ -9,7 +9,7 @@
 - op: add
   path: /data/sso
   value: |
-    issuer: https://token.actions.githubusercontent.com
+    issuer: https://github.com
     clientId:
       name: argo-sso
       key: github.clientID
